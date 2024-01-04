@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2255201016</title>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="container">    
+        <div class="nav-menu">
+            <li><a href="index.html">Data Kamar</a></li>
+            <li><a href="datatamu.html"></a>Data Tamu</li>
+            <li><a href="transaksi.html">Data Inap</a></li>
+        </div>
+        <div class="content">
+            <h3>DATA TAMU</h2>
+            <form class="input">
+                <div class="i">
+                    <p>KODE TAMU</p>
+                    <input type="text" id="kode" />
+                </div>
+                <div class="i">
+                    <p>ALAMAT TAMU</p>
+                    <input type="text" id="alamat" />
+                </div>
+                <div class="i">
+                    <p>NAMA TAMU</p>
+                    <input type="text" id="nama" />
+                </div>
+                <div class="i">
+                    <p>JENIS KELAMIN</p>
+                    <input type="radio" id="lakilaki" name="jeniskelamin" value="Laki-laki"/>
+                    <label for="lakilaki">Laki-laki</label>
+                    <input type="radio" id="perempuan" name="jeniskelamin" value="Perempuan"/>
+                    <label for="perempuan">Perempuan</label>
+                </div>
+            </form>
+            <div class="proses">
+                <button onclick="proses()">proses</button>
+            </div>
+            <h3>INFO TAMU</h3>
+            <div class="tabel">
+                <table>
+                    <tr>
+                        <th>KODE TAMU</th>
+                        <th>KODE KAMAR</th>
+                        <th>ALAMAT</th>
+                        <th>JENIS KELAMIN</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function proses() {
+        var kode = document.getElementById("kode").value;
+        var nama = document.getElementById("nama").value;
+        var alamat = document.getElementById("alamat").value;
+        var jk = document.querySelector("input[name=jeniskelamin]:checked").value
+
+        var table = document.querySelector("table");
+        var row = table.insertRow(-1);
+        
+        var cellKodeTamu = row.insertCell(0);
+        var cellNamaTamu = row.insertCell(1);
+        var cellAlamat = row.insertCell(2);
+        var cellJK = row.insertCell(3);
+        
+        cellKodeTamu.innerHTML = kode;
+        cellNamaTamu.innerHTML = nama;
+        cellAlamat.innerHTML = alamat;
+        cellJK.innerHTML = jk;
+    }
+</script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background-color: #efefef;
+        overflow: hidden;
+    }
+    .header {
+        margin: 100px;
+    }
+    .container{
+        display: flex;
+    }
+    .nav-menu {
+        width: 15%;
+        height: auto;
+        background-color: #efefef;   
+        border: 5px solid #d7d7d7;     
+    }
+    .nav-menu li {
+        padding: 25px;
+    }
+    .content {
+        width: 85%;
+        background-color: rgb(179, 212, 212);
+        padding: 25px;
+    }
+    .content h3 {
+        text-align: center;
+    }
+    
+    .proses{
+        position: relative;
+        left: 20px;
+        
+    }
+    .proses button {
+        width: 185px;
+        padding: 12px;
+    }
+    form { 
+        margin-left: 40%;
+    }
+    .input {
+        display: grid;
+        width: 10%;
+    }
+    .input .i {
+        display: flex;
+        margin : 10px;
+    }
+    table {
+        width: 100%;
+        align-items: center;
+        background-color: white;
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid;
+        text-align: center;
+    }
+</style>
+</html>

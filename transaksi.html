@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>2255201016</title>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="container">    
+        <div class="nav-menu">
+            <li><a href="index.html">Data Kamar</a></li>
+            <li><a href="datatamu.html">Data Tamu</a></li>
+            <li><a href="transaksi.html"></a>Data Inap</li>
+        </div>
+        <div class="content">
+            <h3>TRANSAKSI KAMAR</h2>
+            <form class="input">
+                <div class="i">
+                    <p>KODE TAMU</p>
+                    <input type="text" id="kodetamu" />
+                </div>
+                <div class="i">
+                    <p>KODE KAMAR</p>
+                    <input type="text" id="kodekamar" />
+                </div>
+                <div class="i">
+                    <p>TGL CHECK IN</p>
+                    <input type="date" id="tgl" />
+                </div>
+                <div class="i">
+                    <p>LAMA INAP</p>
+                    <input type="number" id="lama" />
+                </div>
+            </form>
+            <div class="proses">
+                <button onclick="proses()">proses</button>
+            </div>
+            <h3>INFO TRANSAKSI</h3>
+            <div class="tabel">
+                <table>
+                    <tr>
+                        <th>KODE TAMU</th>
+                        <th>KODE KAMAR</th>
+                        <th>TARIF</th>
+                        <th>LAMA INAP</th>
+                        <th>TOTAL TARIF</th>
+                        <th>DISKON</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function proses() {
+        var kodetamu = document.getElementById("kodetamu").value;
+        var kodekamar = document.getElementById("kodekamar").value;
+        var lama = document.getElementById("lama").value;
+        if (kodekamar == "A") {
+            tarif = 3000000;
+        }
+        else if (kodekamar == "B") {
+            tarif = 4000000;
+        }
+        else if (kodekamar == "C") {
+            tarif = 5000000;;
+        }
+        var total = tarif * lama;
+        if (kodekamar == "A" && lama >= 5) {
+            diskon = 0.1 * total;
+        }
+        else if (kodekamar == "B" && lama >=5) {
+            diskon = 0.1 * total;
+        }
+        else if (kodekamar == "C" && lama >=5) {
+            diskon = 0.07 * total;
+        }
+        else {
+            diskon = 0;
+        }
+        var table = document.querySelector("table");
+        var row = table.insertRow(-1);
+        
+        var cellKodeTamu = row.insertCell(0);
+        var cellKodeKamar = row.insertCell(1);
+        var cellTarif = row.insertCell(2);
+        var cellLama = row.insertCell(3);
+        var cellTotal = row.insertCell(4);
+        var cellDiskon = row.insertCell(5);
+        
+        cellKodeTamu.innerHTML = kodetamu;
+        cellKodeKamar.innerHTML = kodekamar;
+        cellTarif.innerHTML = tarif;
+        cellLama.innerHTML = lama;
+        cellTotal.innerHTML = total;
+        cellDiskon.innerHTML = diskon;
+    }
+</script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background-color: #efefef;
+        overflow: hidden;
+    }
+    .header {
+        margin: 100px;
+    }
+    .container{
+        display: flex;
+    }
+    .nav-menu {
+        width: 15%;
+        height: auto;
+        background-color: #efefef;   
+        border: 5px solid #d7d7d7;     
+    }
+    .nav-menu li {
+        padding: 25px;
+    }
+    .content {
+        width: 85%;
+        background-color: rgb(179, 212, 212);
+        padding: 25px;
+    }
+    .content h3 {
+        text-align: center;
+    }
+    
+    .proses{
+        position: relative;
+        left: 20px;
+        
+    }
+    .proses button {
+        width: 185px;
+        padding: 12px;
+    }
+    form { 
+        margin-left: 40%;
+    }
+    .input {
+        display: grid;
+        width: 10%;
+    }
+    .input .i {
+        display: flex;
+        margin : 10px;
+    }
+    table {
+        width: 100%;
+        align-items: center;
+        background-color: white;
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid;
+        text-align: center;
+    }
+</style>
+</html>
